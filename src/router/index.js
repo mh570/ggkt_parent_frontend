@@ -77,6 +77,21 @@ export const constantRoutes = [
     ]
   },
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   {
     path: '/vod',
     component: Layout,
@@ -87,17 +102,226 @@ export const constantRoutes = [
       {
         path: 'teacher/list',
         name: 'Teacherlist',
-        component: () => import('@/views/teacher/list'),
+        component: () => import('@/views/vod/teacher/list'),
         meta: { title: 'Teacher图标', icon: 'table' }
       },
       {
         path: 'teacher/create',
         name: 'TeacherCreate',
-        component: () => import('@/views/teacher/create'),
+        component: () => import('@/views/vod/teacher/create'),
         meta: { title: 'addTeacher', icon: 'tree' }
+      },
+      {
+        path: 'teacher/edit/:id',
+        name: 'TeacherEdit',
+        component: () => import('@/views/vod/teacher/create'),
+        meta: { title: '编辑Teacher'},
+        hidden: true
       }
     ]
   },
+
+  {
+    path: '/subject',
+    component: Layout,
+    redirect: '/subject/list',
+    name: '课程分类管理',
+    alwaysShow: true,
+    meta: { title: '课程分类管理', icon: 'example' },
+    children: [
+      {
+        path: 'list',
+        name: '课程分类列表',
+        component: () => import('@/views/vod/subject/list'),
+        meta: { title: '课程分类列表', icon: 'table' }
+      }
+    ]
+  },
+
+  {
+    path: '/vodcourse',
+    component: Layout,
+    redirect: '/vodcourse/course/list',
+    name: 'Vodcourse',
+    meta: {
+      title: '点播管理',
+      icon: 'el-icon-bank-card'
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'course/list',
+        name: 'CourseList',
+        component: () => import('@/views/vod/course/list'),
+        meta: { title: '课程列表', icon: 'table'}
+      },
+      {
+        path: 'course/info',
+        name: 'CourseInfo',
+        component: () => import('@/views/vod/course/form'),
+        meta: { title: '发布课程' },
+        hidden: true
+      },
+      {
+        path: 'course/info/:id',
+        name: 'CourseInfoEdit',
+        component: () => import('@/views/vod/course/form'),
+        meta: { title: '编辑课程' },
+        hidden: true
+      },
+      {
+        path: 'course/chapter/:id',
+        name: 'CourseChapterEdit',
+        component: () => import('@/views/vod/course/form'),
+        meta: { title: '编辑大纲' },
+        hidden: true
+      },
+      {
+        path: 'course/chart/:id',
+        name: 'CourseChart',
+        component: () => import('@/views/vod/course/chart'),
+        meta: { title: '课程统计' },
+        hidden: true
+      }
+    ]
+  },
+
+  {
+    path: '/order',
+    component: Layout,
+    redirect: '/order/orderInfo/list',
+    name: 'Order',
+    meta: { title: '订单管理', icon: 'el-icon-truck' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'orderInfo/list',
+        name: 'OrderInfo',
+        component: () => import('@/views/order/list'),
+        meta: { title: '订单列表' }
+      }
+    ]
+  },
+
+  {
+    path: '/activity',
+    component: Layout,
+    redirect: '/couponInfo/list',
+    name: 'Activity',
+    meta: { title: '营销管理', icon: 'el-icon-football' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'couponInfo/list',
+        name: 'CouponInfo',
+        component: () => import('@/views/activity/couponInfo/list'),
+        meta: { title: '优惠券列表' }
+      },
+      {
+        path: 'couponInfo/add',
+        name: 'CouponInfoAdd',
+        component: () => import('@/views/activity/couponInfo/form'),
+        meta: { title: '添加' },
+        hidden: true
+      },
+      {
+        path: 'couponInfo/edit/:id',
+        name: 'CouponInfoEdit',
+        component: () => import('@/views/activity/couponInfo/form'),
+        meta: { title: '编辑', noCache: true },
+        hidden: true
+      },
+      {
+        path: 'couponInfo/show/:id',
+        name: 'CouponInfoShow',
+        component: () => import('@/views/activity/couponInfo/show'),
+        meta: { title: '详情', noCache: true },
+        hidden: true
+      }
+    ]
+  },
+
+  {
+    path: '/wechat',
+    component: Layout,
+    redirect: '/wechat/menu/list',
+    name: 'Wechat',
+    meta: {
+      title: '公众号菜单管理',
+      icon: 'el-icon-refrigerator'
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'menu/list',
+        name: 'Menu',
+        component: () => import('@/views/wechat/menu/list'),
+        meta: { title: '菜单列表' }
+      }
+    ]
+  },
+
+  
+  {
+    path: '/live',
+    component: Layout,
+    redirect: '/live/liveCourse/list',
+    name: 'Live',
+    meta: {
+      title: '直播管理',
+      icon: 'el-icon-bangzhu'
+    },
+    alwaysShow: true,
+
+    children: [
+      {
+        path: 'liveCourse/list',
+        name: 'liveCourseList',
+        component: () => import('@/views/live/liveCourse/list'),
+        meta: { title: '直播列表' }
+      },
+      {
+        path: 'liveCourse/config/:id',
+        name: 'liveCourseConfig',
+        component: () => import('@/views/live/liveCourse/config'),
+        meta: { title: '直播配置' },
+        hidden: true
+      },
+      {
+        path: 'liveVisitor/list/:id',
+        name: 'liveVisitor',
+        component: () => import('@/views/live/liveVisitor/list'),
+        meta: { title: '观看记录' },
+        hidden: true
+      }
+    ]
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   {
     path: '/form',
@@ -112,6 +336,9 @@ export const constantRoutes = [
     ]
   },
 
+
+
+  
   {
     path: '/nested',
     component: Layout,
